@@ -1,0 +1,18 @@
+flowchart TD
+    A(["Inicio: streamlit run app.py"]) --> B[/"Ingresar n con 5 ≤ n ≤ 10"/]
+    B --> C{"¿Modo de creación<br/>del grafo?"}
+    C -- Manual --> D[/"Ingresar aristas y pesos<br/>formulario, texto o ejemplo"/]
+    C -- Aleatorio --> E["Generar grafo aleatorio<br/>densidad, pesos y semilla"]
+    D --> F["Construir el grafo ponderado<br/>y dibujarlo etiquetado"]
+    E --> F
+    F --> G["Matriz de adyacencia y matriz<br/>de caminos - Lectura 5.1"]
+    G --> H{"¿Existe algún ciclo<br/>hamiltoniano?"}
+    H -- No --> I[/"Informar qué aristas faltan<br/>mínimo y alternativas"/]
+    I --> J[/"Usuario asigna pesos<br/>y agrega las aristas"/]
+    J --> G
+    H -- Sí --> K["Fuerza bruta: generar las<br/>(n-1)!/2 rutas candidatas"]
+    K --> L["Evaluar cada ruta:<br/>sumar pesos o descartar"]
+    L --> M[/"Recorrer paso a paso:<br/>siguiente, anterior, saltos, reproducir"/]
+    M --> N["Matriz de costos y<br/>ciclos ordenados por costo"]
+    N --> O[/"Mostrar número de ciclos, costo de cada uno<br/>y ciclo óptimo resaltado en el grafo"/]
+    O --> P(["Fin"])
