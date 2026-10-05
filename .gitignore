@@ -1,0 +1,12 @@
+# Entornos y cachés de Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Material del curso y respaldos (no se suben al repositorio)
+DOCUMENTOS DE AYUDA/
+version_avanzada_respaldo.zip
+
+# Streamlit: secretos locales (nunca subirlos)
+.streamlit/secrets.toml

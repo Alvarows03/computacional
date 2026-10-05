@@ -1,0 +1,18 @@
+flowchart TD
+    A(["Entrada: grafo G con n vértices"]) --> B["Fijar A como vértice inicial"]
+    B --> C["Generar las permutaciones de los otros n-1 vértices<br/>en orden lexicográfico"]
+    C --> D{"¿Quedan<br/>permutaciones?"}
+    D -- No --> Z["Ordenar los ciclos por costo<br/>y elegir el mínimo, con empates"]
+    D -- Sí --> E{"¿Primer vértice < último?<br/>evita el sentido inverso"}
+    E -- No --> D
+    E -- Sí --> F["Ruta candidata:<br/>A → p1 → ... → p(n-1) → A"]
+    F --> G{"¿Existen todas<br/>las aristas?"}
+    G -- No --> H["Descartar la ruta y<br/>registrar la arista faltante"]
+    G -- Sí --> I["Sumar los pesos:<br/>costo del ciclo"]
+    I --> J{"¿Costo menor que<br/>el mejor actual?"}
+    J -- Sí --> K["Nuevo mejor ciclo:<br/>marcar la mejora"]
+    J -- No --> L["Conservar el mejor actual"]
+    H --> D
+    K --> D
+    L --> D
+    Z --> Y(["Salida: cantidad de ciclos, costo de cada uno<br/>y ciclo hamiltoniano óptimo"])

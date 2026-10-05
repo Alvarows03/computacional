@@ -1,0 +1,9 @@
+flowchart LR
+    APP["app.py<br/>menú de los 4 pasos"] --> PASOS["modules/paso_1 ... paso_4<br/>una pantalla por paso"]
+    PASOS --> GM["modules/graph_manager.py<br/>grafo, matrices, validación"]
+    PASOS --> TS["modules/tsp_solver.py<br/>matriz de costos, fuerza bruta"]
+    PASOS --> UIC["modules/ui_components.py<br/>dibujo del grafo y tablas"]
+    TS --> GM
+    UIC --> GM
+    APP -. usa .-> ST(["Streamlit"])
+    UIC -. dibuja con .-> MPL(["Matplotlib y pandas"])
