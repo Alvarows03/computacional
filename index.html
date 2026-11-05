@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TSP por fuerza bruta · Matemática Computacional</title>
+  <meta name="description" content="Problema del Agente Viajero por fuerza bruta: construye el grafo, valida ciclos hamiltonianos y recorre paso a paso la búsqueda del ciclo óptimo.">
+  <meta name="theme-color" content="#0e1117">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div class="app">
+
+    <!-- ===== Barra lateral: configuración y estado ===== -->
+    <aside class="lateral" aria-label="Configuración">
+      <h2 class="lateral-titulo">⚙️ Configuración</h2>
+      <div class="config" id="config"></div>
+
+      <div class="lateral-bloque">
+        <h3>Estado del proyecto</h3>
+        <ul class="estado" id="estado"></ul>
+      </div>
+
+      <div class="lateral-bloque">
+        <h3>Cómo usarla</h3>
+        <ol class="como">
+          <li>Elige <b>n</b> y construye el grafo.</li>
+          <li>Revisa la validación: ¿hay ciclo hamiltoniano?</li>
+          <li>Ejecuta la fuerza bruta y recorre las rutas.</li>
+          <li>Consulta la matriz de costos y el ciclo óptimo.</li>
+        </ol>
+      </div>
+
+      <details class="lateral-bloque">
+        <summary>Lecturas aplicadas</summary>
+        <ul class="lecturas">
+          <li><b>7</b> Agente viajero (ciclos hamiltonianos, fuerza bruta)</li>
+          <li><b>5.1</b> Componentes conexas (matriz de caminos)</li>
+          <li><b>5.2</b> Grafos ponderados (matriz de costos)</li>
+        </ul>
+      </details>
+    </aside>
+
+    <!-- ===== Zona principal ===== -->
+    <main class="principal">
+      <header class="cabecera">
+        <h1>🧭 Problema del Agente Viajero por fuerza bruta</h1>
+        <p class="cabecera-sub">1AMA0726 – Matemática Computacional · Proyecto 2026-20 · Problema 4</p>
+      </header>
+
+      <nav class="pasos" id="pasos" aria-label="Pasos del programa"></nav>
+      <div id="panel" class="panel" aria-live="polite"></div>
+    </main>
+  </div>
+
+  <script src="js/graph.js"></script>
+  <script src="js/solver.js"></script>
+  <script src="js/draw.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
