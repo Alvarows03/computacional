@@ -197,3 +197,31 @@ tr.optima td { background: rgba(245,183,59,.16); color: #ffe0a0; font-weight: 70
   .dos { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .panel > *, .dibuja, #detalle-paso { animation: none; stroke-dashoffset: 0; } .boton { transition: none; } }
+
+/* ---------- tutorial de bienvenida ---------- */
+.tuto-velo { position: fixed; inset: 0; z-index: 900; background: transparent; }
+.tuto-velo.tuto-oscuro { background: rgba(5, 8, 14, .78); backdrop-filter: blur(2px); }
+.tuto-foco {
+  position: fixed; z-index: 901; border-radius: 16px; pointer-events: none; border: 2px solid var(--acento);
+  box-shadow: 0 0 0 9999px rgba(5, 8, 14, .78), 0 0 0 6px rgba(255, 75, 75, .35), 0 0 32px rgba(255, 75, 75, .55);
+  transition: left .3s ease, top .3s ease, width .3s ease, height .3s ease;
+}
+.tuto-tarjeta {
+  position: fixed; z-index: 902; background: #fff; color: #11141c; border-radius: 16px; padding: 20px 22px 22px; box-shadow: 0 24px 60px rgba(0, 0, 0, .55);
+  animation: entra .3s ease both;
+}
+.tuto-tarjeta h3 { font-size: 1.25rem; margin: 2px 0 8px; color: #11141c; }
+.tuto-tarjeta p { margin: 0 0 14px; color: #3b4254; line-height: 1.5; }
+.tuto-tarjeta p:last-child { margin-bottom: 0; }
+.tuto-paso { font-size: .74rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--acento); }
+.tuto-barra {
+  position: fixed; z-index: 903; right: 16px; bottom: 16px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end;
+  background: rgba(23, 26, 35, .96); border: 1px solid var(--linea); border-radius: 14px; padding: 10px 12px; box-shadow: 0 16px 40px rgba(0, 0, 0, .55); max-width: calc(100vw - 32px);
+}
+.tuto-casilla { display: flex; align-items: center; gap: 8px; font-size: .82rem; color: var(--texto-2); cursor: pointer; }
+.tuto-casilla input { accent-color: var(--acento); width: 16px; height: 16px; }
+.tuto-cuenta { font-size: .82rem; font-weight: 700; color: var(--texto-2); min-width: 38px; text-align: center; }
+.tuto-omitir { border-color: rgba(255, 107, 122, .5); color: var(--rojo); }
+.tuto-omitir:hover:not(:disabled) { background: rgba(255, 107, 122, .12); border-color: var(--rojo); color: var(--rojo); }
+#btn-tutorial { width: 100%; }
+@media (max-width: 600px) { .tuto-casilla { width: 100%; } }
