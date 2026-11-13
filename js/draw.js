@@ -46,6 +46,10 @@
   function renderGraph(host, g, pos, opciones) {
     opciones = opciones || {};
     const n = g.n;
+    const circulo = circlePositions(n);
+    for (let i = 0; i < n; i++) {                           // protección: nunca dibujar con posiciones inválidas
+      if (!pos[i] || !isFinite(pos[i].x) || !isFinite(pos[i].y)) pos[i] = { x: circulo[i].x, y: circulo[i].y };
+    }
     host.innerHTML = "";
     const svg = svgEl("svg", {
       viewBox: "0 0 " + TAM + " " + TAM, class: "grafo-svg", role: "img",
@@ -157,7 +161,9 @@
     let arrastrando = -1;
     function haciaCoordenadas(ev) {
       const r = svg.getBoundingClientRect();
-      return { x: (ev.clientX - r.left) / r.width, y: (ev.clientY - r.top) / r.height };
+      if (r.width <= 0 || r.height <= 0) return null;        // dibujo oculto o sin tamaño
+      const x = (ev.clientX - r.left) / r.width, y = (ev.clientY - r.top) / r.height;
+      return isFinite(x) && isFinite(y) ? { x: x, y: y } : null;
     }
     nodos.forEach(function (grupo, v) {
       grupo.addEventListener("pointerdown", function (ev) {
@@ -169,6 +175,7 @@
       grupo.addEventListener("pointermove", function (ev) {
         if (arrastrando !== v) return;
         const c = haciaCoordenadas(ev);
+        if (!c) return;
         const margen = (RADIO + 6) / TAM;                  // que el vértice no salga del lienzo
         pos[v].x = Math.min(1 - margen, Math.max(margen, c.x));
         pos[v].y = Math.min(1 - margen, Math.max(margen, c.y));
